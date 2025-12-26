@@ -223,6 +223,59 @@ const Home = () => {
         </div>
       </section>
 
+      {/* 7. Parent Reviews Marquee */}
+      <section className="section-container reviews-section">
+        <h2 className="section-headline" style={{ textAlign: 'center' }}>Loved by Parents Like You</h2>
+        <div className="marquee-wrapper">
+          <div className="marquee-content">
+            {/* Original Set */}
+            <div className="review-card">
+              <div className="stars">
+                <Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" />
+              </div>
+              <p className="review-text">"Super fast delivery! I ordered in the morning and got it by evening. Lifesaver for busy moms."</p>
+              <p className="review-author">Sarah, Colombo</p>
+            </div>
+            <div className="review-card">
+              <div className="stars">
+                <Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" />
+              </div>
+              <p className="review-text">"Love the variety. I can buy different brands for day and night in one go. Excellent service from Nappy Garde."</p>
+              <p className="review-author">Mike, Kandy</p>
+            </div>
+            <div className="review-card">
+              <div className="stars">
+                <Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" />
+              </div>
+              <p className="review-text">"Genuine products at the best prices. Nappy Garde is my go-to for all baby essentials."</p>
+              <p className="review-author">Emily, Galle</p>
+            </div>
+            {/* Duplicated for seamless loop */}
+            <div className="review-card">
+              <div className="stars">
+                <Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" />
+              </div>
+              <p className="review-text">"Super fast delivery! I ordered in the morning and got it by evening. Lifesaver for busy moms."</p>
+              <p className="review-author">Sarah, Colombo</p>
+            </div>
+            <div className="review-card">
+              <div className="stars">
+                <Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" />
+              </div>
+              <p className="review-text">"Love the variety. I can buy different brands for day and night in one go. Excellent service from Nappy Garde."</p>
+              <p className="review-author">Mike, Kandy</p>
+            </div>
+            <div className="review-card">
+              <div className="stars">
+                <Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" />
+              </div>
+              <p className="review-text">"Genuine products at the best prices. Nappy Garde is my go-to for all baby essentials."</p>
+              <p className="review-author">Emily, Galle</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Size Calculator Modal */}
       {
         showSizeModal && (

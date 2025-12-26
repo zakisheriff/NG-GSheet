@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { addOrder } from '@/lib/googleSheets';
+import { sendWhatsAppNotification } from '../whatsapp/route';
 
 export async function POST(request: Request) {
     try {
@@ -24,6 +25,16 @@ export async function POST(request: Request) {
         const success = await addOrder(orderData);
 
         if (success) {
+            // Send WhatsApp notification to business owner
+            sendWhatsAppNotification({
+                orderId,
+                customerName: customer.name,
+                phone: customer.phone,
+                address: customer.address,
+                items: orderData.ProductsOrdered,
+                total,
+            }).catch(err => console.error('WhatsApp notification failed:', err));
+
             return NextResponse.json({ success: true, orderId });
         } else {
             return NextResponse.json({ error: 'Failed to save order to sheet' }, { status: 500 });
@@ -32,3 +43,4 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
     }
 }
+
