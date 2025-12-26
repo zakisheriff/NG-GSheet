@@ -1,8 +1,18 @@
 "use client";
 
+import { useEffect, useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import Link from 'next/link';
+import ProductCard from '@/components/ProductCard';
 import './Cart.css';
+
+interface Product {
+    ProductID: string;
+    ProductName: string;
+    Price: string | number;
+    Stock: string | number;
+    ImageURL?: string;
+}
 
 const BagIcon = () => (
     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#86868b' }}>
@@ -14,6 +24,26 @@ const BagIcon = () => (
 
 export default function CartPage() {
     const { cartItems, total, updateQuantity, removeFromCart } = useCart();
+    const [recommended, setRecommended] = useState<Product[]>([]);
+
+    useEffect(() => {
+        const fetchRecommended = async () => {
+            try {
+                const response = await fetch('/api/products');
+                const products = await response.json();
+                if (Array.isArray(products)) {
+                    // Get random 4 products not in cart
+                    const cartIds = cartItems.map(item => item.ProductID);
+                    const available = products.filter((p: Product) => !cartIds.includes(p.ProductID));
+                    const shuffled = available.sort(() => 0.5 - Math.random());
+                    setRecommended(shuffled.slice(0, 4));
+                }
+            } catch (error) {
+                console.error('Failed to fetch recommended products', error);
+            }
+        };
+        fetchRecommended();
+    }, [cartItems]);
 
     const handleQuantityChange = (id: string, newQty: number) => {
         if (newQty < 1) return;
@@ -22,13 +52,25 @@ export default function CartPage() {
 
     if (cartItems.length === 0) {
         return (
-            <div className="cart-page page empty flex flex-col items-center justify-center min-h-[60vh]">
-                <div className="empty-cart-container flex flex-col items-center text-center">
-                    <div className="empty-icon mb-6"><BagIcon /></div>
-                    <h2 className="text-3xl font-bold mb-4">Your bag is empty.</h2>
-                    <p className="text-gray-500 mb-8 text-lg">Free delivery and free returns.</p>
-                    <Link href="/products" className="btn btn-primary btn-large inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors">Continue Shopping</Link>
+            <div className="cart-page page empty">
+                <div className="empty-cart-container">
+                    <div className="empty-icon"><BagIcon /></div>
+                    <h2>Your bag is empty.</h2>
+                    <p>Free delivery and free returns.</p>
+                    <Link href="/products" className="btn btn-primary btn-large">Continue Shopping</Link>
                 </div>
+
+                {/* Recommended Products */}
+                {recommended.length > 0 && (
+                    <div className="container-wide recommended-section">
+                        <h2 className="recommended-title">You Might Like</h2>
+                        <div className="recommended-grid">
+                            {recommended.map(product => (
+                                <ProductCard key={product.ProductID} product={product} />
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }
@@ -93,6 +135,18 @@ export default function CartPage() {
                         </div>
                     </div>
                 </div>
+
+                {/* Recommended Products */}
+                {recommended.length > 0 && (
+                    <div className="recommended-section">
+                        <h2 className="recommended-title">You Might Also Like</h2>
+                        <div className="recommended-grid">
+                            {recommended.map(product => (
+                                <ProductCard key={product.ProductID} product={product} />
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

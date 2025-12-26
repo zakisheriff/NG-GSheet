@@ -3,7 +3,16 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
 import { useRouter } from 'next/navigation';
+import ProductCard from '@/components/ProductCard';
 import './Checkout.css';
+
+interface Product {
+    ProductID: string;
+    ProductName: string;
+    Price: string | number;
+    Stock: string | number;
+    ImageURL?: string;
+}
 
 export default function CheckoutPage() {
     const { cartItems, total, clearCart, removeFromCart } = useCart();
@@ -14,6 +23,25 @@ export default function CheckoutPage() {
         phone: '',
         address: '',
     });
+    const [recommended, setRecommended] = useState<Product[]>([]);
+
+    useEffect(() => {
+        const fetchRecommended = async () => {
+            try {
+                const response = await fetch('/api/products');
+                const products = await response.json();
+                if (Array.isArray(products)) {
+                    const cartIds = cartItems.map(item => item.ProductID);
+                    const available = products.filter((p: Product) => !cartIds.includes(p.ProductID));
+                    const shuffled = available.sort(() => 0.5 - Math.random());
+                    setRecommended(shuffled.slice(0, 4));
+                }
+            } catch (error) {
+                console.error('Failed to fetch recommended products', error);
+            }
+        };
+        fetchRecommended();
+    }, [cartItems]);
 
     useEffect(() => {
         if (cartItems.length === 0) {
@@ -174,6 +202,20 @@ export default function CheckoutPage() {
                     </div>
                 </div>
             </div>
+
+            {/* Recommended Products */}
+            {recommended.length > 0 && (
+                <div className="container-wide">
+                    <div className="recommended-section">
+                        <h2 className="recommended-title">Add More to Your Order</h2>
+                        <div className="recommended-grid">
+                            {recommended.map(product => (
+                                <ProductCard key={product.ProductID} product={product} />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

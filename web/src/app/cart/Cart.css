@@ -1,5 +1,5 @@
 .cart-page {
-    padding-top: 100px;
+    padding-top: 120px;
     padding-bottom: 80px;
     background: #fff;
     min-height: 100vh;
@@ -45,7 +45,8 @@
     font-size: 40px;
     font-weight: 700;
     max-width: 800px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    margin-top: 16px;
 }
 
 .cart-subtitle {
@@ -262,5 +263,51 @@
 
     .summary-card h2 {
         font-size: 20px;
+    }
+}
+
+/* ============================================= */
+/* RECOMMENDED PRODUCTS SECTION */
+/* ============================================= */
+.recommended-section {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid #d2d2d7;
+}
+
+.recommended-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.recommended-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1024px) {
+    .recommended-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .recommended-section {
+        margin-top: 40px;
+        padding-top: 32px;
+    }
+
+    .recommended-title {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .recommended-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 }
