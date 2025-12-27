@@ -92,8 +92,7 @@
 
 .social-link:hover {
     color: white;
-    background-color: #0071e3;
-    transform: translateY(-3px);
+    transform: translateY(-1px);
 }
 
 /* Responsive */

@@ -284,12 +284,36 @@
     color: #ffffff;
     border-radius: 100px;
     text-decoration: none;
-    transition: background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    /* Only shadow changes */
+}
+
+/* Shine for CTA */
+.why-cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    transition: none;
+    pointer-events: none;
 }
 
 .why-cta-btn:hover {
-    background: #ffffff;
-    color: #D4AF37;
+    background: #D4AF37;
+    /* Keep background same */
+    color: #ffffff;
+    /* Keep text same */
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.why-cta-btn:hover::after {
+    animation: shine 0.75s;
 }
 
 /* Mobile responsiveness */

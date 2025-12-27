@@ -105,12 +105,12 @@ const Home = () => {
               <Link href="/products" className="btn btn-primary btn-xl btn-gold">
                 Shop 2026 Essentials
               </Link>
-              <button
-                onClick={() => setShowSizeModal(true)}
+              <a
+                href="tel:0777798788"
                 className="btn btn-xl btn-glass-gold"
               >
                 Contact Us
-              </button>
+              </a>
             </div>
           </div>
 
