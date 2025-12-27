@@ -16,6 +16,7 @@ export async function POST(request: Request) {
             CustomerName: customer.name,
             Phone: customer.phone,
             Address: customer.address,
+            District: customer.district,
             ProductsOrdered: items.map((i: any) => `${i.ProductName} (x${i.quantity})`).join('\n'),
             Total: total,
             Date: date,

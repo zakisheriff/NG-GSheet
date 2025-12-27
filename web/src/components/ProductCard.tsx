@@ -83,7 +83,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                         className="product-card-action-btn"
                     >
                         <ShoppingCart size={16} />
-                        {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                        {isOutOfStock ? 'Out of Stock' : 'Add to Bag'}
                     </button>
                 </div>
 

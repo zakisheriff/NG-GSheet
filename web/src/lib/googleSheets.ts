@@ -50,6 +50,7 @@ export async function addOrder(order: any) {
       CustomerName: order.CustomerName,
       Phone: order.Phone,
       Address: order.Address,
+      District: order.District,
       ProductsOrdered: order.ProductsOrdered,
       Total: order.Total,
       Date: order.Date,

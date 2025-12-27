@@ -671,7 +671,7 @@ body.menu-open {
     .navbar-actions {
         margin-left: auto;
         display: flex;
-        gap: 20px;
+        gap: 8px !important;
         align-items: center;
     }
 

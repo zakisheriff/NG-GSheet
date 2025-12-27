@@ -22,7 +22,17 @@ export default function CheckoutPage() {
         name: '',
         phone: '',
         address: '',
+        district: '',
     });
+
+    // Sri Lankan Districts
+    const districts = [
+        'Colombo', 'Gampaha', 'Kalutara', 'Kandy', 'Matale', 'Nuwara Eliya',
+        'Galle', 'Matara', 'Hambantota', 'Jaffna', 'Kilinochchi', 'Mannar',
+        'Vavuniya', 'Mullaitivu', 'Batticaloa', 'Ampara', 'Trincomalee',
+        'Kurunegala', 'Puttalam', 'Anuradhapura', 'Polonnaruwa', 'Badulla',
+        'Monaragala', 'Ratnapura', 'Kegalle'
+    ];
     const [recommended, setRecommended] = useState<Product[]>([]);
     const [promoCode, setPromoCode] = useState('');
     const [discount, setDiscount] = useState(0);
@@ -53,7 +63,7 @@ export default function CheckoutPage() {
         }
     }, [cartItems, router]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
         // Anti-Fraud: Clear discount if details are changed after applying
@@ -144,7 +154,7 @@ export default function CheckoutPage() {
             if (orderData.success) {
                 // 2. Construct WhatsApp Message
                 const itemsList = cartItems.map(i => `- ${i.ProductName} (x${i.quantity})`).join('%0a');
-                let message = `*New Order: ${orderData.orderId}*%0a%0a*Customer:* ${formData.name}%0a*Phone:* ${formData.phone}%0a*Address:* ${formData.address}%0a%0a*Items:*%0a${itemsList}`;
+                let message = `*New Order: ${orderData.orderId}*%0a%0a*Customer:* ${formData.name}%0a*Phone:* ${formData.phone}%0a*Address:* ${formData.address}%0a*District:* ${formData.district}%0a%0a*Items:*%0a${itemsList}`;
 
                 if (discount > 0) {
                     message += `%0a%0a*Subtotal:* LKR ${total.toFixed(2)}%0a*Discount:* -LKR ${discount.toFixed(2)} (${promoCode})`;
@@ -217,6 +227,39 @@ export default function CheckoutPage() {
                                     onChange={handleChange}
                                     required
                                 />
+                            </div>
+                            <div className="form-group">
+                                <label>District</label>
+                                <select
+                                    name="district"
+                                    className="form-select"
+                                    value={formData.district}
+                                    onChange={handleChange}
+                                    required
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px 48px 12px 16px',
+                                        borderRadius: '12px',
+                                        border: '1px solid #d2d2d7',
+                                        fontSize: '16px',
+                                        color: '#1d1d1f',
+                                        backgroundColor: '#fff',
+                                        WebkitAppearance: 'none',
+                                        MozAppearance: 'none',
+                                        appearance: 'none',
+                                        cursor: 'pointer',
+                                        outline: 'none',
+                                        backgroundImage: 'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4Njg2OGIiIHN0cm9rZS13aWR0aD0iMiI+PHBvbHlsaW5lIHBvaW50cz0iNiA5IDEyIDE1IDE4IDkiPjwvcG9seWxpbmU+PC9zdmc+")',
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundPosition: 'right 16px center',
+                                        backgroundSize: '16px',
+                                    }}
+                                >
+                                    <option value="">Select your district</option>
+                                    {districts.map(d => (
+                                        <option key={d} value={d}>{d}</option>
+                                    ))}
+                                </select>
                             </div>
                         </div>
 
@@ -303,7 +346,7 @@ export default function CheckoutPage() {
                         <button
                             type="submit"
                             form="checkout-form"
-                            className="btn btn-primary btn-large place-order-btn"
+                            className="place-order-btn"
                             disabled={loading}
                         >
                             {loading ? 'Processing...' : 'Place Order on WhatsApp'}

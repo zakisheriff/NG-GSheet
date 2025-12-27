@@ -202,15 +202,22 @@
 }
 
 @media (max-width: 900px) {
+    .cart-page {
+        padding-top: 150px;
+        padding-bottom: 80px;
+        background: #fff;
+        min-height: 100vh;
+    }
+
     .cart-layout {
         grid-template-columns: 1fr;
     }
 }
 
 /* Mobile cart item styles */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .cart-page {
-        padding-top: 80px;
+        padding-top: 120px !important;
         padding-left: 16px;
         padding-right: 16px;
     }
