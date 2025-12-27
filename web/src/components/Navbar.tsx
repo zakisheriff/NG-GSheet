@@ -54,12 +54,12 @@ const Navbar = () => {
                         {/* Desktop Navigation */}
                         <div className="navbar-links">
                             <Link href="/" className="nav-link">Home</Link>
+                            <Link href="/products" className="nav-link">All Products</Link>
                             <Link href="/products?category=Diapers" className="nav-link">Diapers & Pants</Link>
                             <Link href="/products?category=Wipes" className="nav-link">Wet Wipes</Link>
                             <Link href="/products?category=Skincare" className="nav-link">Bath & Skincare</Link>
                             <Link href="/products?category=Clothing" className="nav-link">Clothing</Link>
                             <Link href="/products?category=Toys" className="nav-link">Toys</Link>
-                            <Link href="/products?category=Health" className="nav-link">Health</Link>
                         </div>
 
                         {/* Right Side Actions */}
@@ -142,6 +142,9 @@ const Navbar = () => {
                         <Link href="/" className="mobile-link" onClick={closeMobileMenu}>
                             Home
                         </Link>
+                        <Link href="/products" className="mobile-link" onClick={closeMobileMenu}>
+                            All Products
+                        </Link>
                         <Link href="/products?category=Diapers" className="mobile-link" onClick={closeMobileMenu}>
                             Diapers & Pants
                         </Link>
@@ -157,9 +160,7 @@ const Navbar = () => {
                         <Link href="/products?category=Toys" className="mobile-link" onClick={closeMobileMenu}>
                             Toys & Gear
                         </Link>
-                        <Link href="/products?category=Health" className="mobile-link" onClick={closeMobileMenu}>
-                            Health & Safety
-                        </Link>
+
                         <Link href="/cart" className="mobile-link" onClick={closeMobileMenu}>
                             Cart {cartCount > 0 && `(${cartCount})`}
                         </Link>

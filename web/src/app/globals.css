@@ -581,6 +581,19 @@ p {
   font-weight: 600;
 }
 
+.discount-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ff3b30;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  z-index: 10;
+}
+
 .product-details {
   display: flex;
   flex-direction: column;
@@ -621,10 +634,29 @@ p {
   padding-top: 0;
 }
 
+.product-price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .product-price {
   font-size: 20px;
   font-weight: 700;
   color: #1d1d1f;
+}
+
+.price-discounted {
+  color: #ff3b30;
+  /* Red for discount */
+}
+
+.price-original {
+  font-size: 14px;
+  color: #86868b;
+  text-decoration: line-through;
+  font-weight: 500;
 }
 
 .stock-warning {

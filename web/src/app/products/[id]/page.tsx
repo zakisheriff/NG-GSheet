@@ -38,6 +38,7 @@ interface Product {
     ImageURL?: string;
     Description?: string;
     Benefits?: string;
+    OriginalPrice?: string | number;
 }
 
 export default function ProductDetail() {
@@ -117,8 +118,24 @@ export default function ProductDetail() {
                         <h1 className="product-title">{product.ProductName}</h1>
 
                         <div className="product-meta">
-
-                            <span className="product-price">LKR {Number(product.Price).toFixed(2)}</span>
+                            <div className="price-wrapper" style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
+                                {(product.OriginalPrice && Number(product.OriginalPrice) > Number(product.Price)) && (
+                                    <span className="product-price-original" style={{
+                                        color: '#86868b',
+                                        textDecoration: 'line-through',
+                                        fontSize: '20px',
+                                        fontWeight: '500'
+                                    }}>
+                                        LKR {Number(product.OriginalPrice).toFixed(2)}
+                                    </span>
+                                )}
+                                <span className="product-price" style={{
+                                    color: (product.OriginalPrice && Number(product.OriginalPrice) > Number(product.Price)) ? '#ff3b30' : '#1d1d1f',
+                                    fontSize: '32px'
+                                }}>
+                                    LKR {Number(product.Price).toFixed(2)}
+                                </span>
+                            </div>
                         </div>
                     </div>
 

@@ -13,6 +13,7 @@ interface Product {
     ImageURL?: string;
     // Optional / Legacy fields
     Description?: string;
+    OriginalPrice?: string | number;
 }
 
 const ProductCard = ({ product }: { product: Product }) => {
@@ -20,7 +21,10 @@ const ProductCard = ({ product }: { product: Product }) => {
 
     const imageUrl = product.ImageURL || 'https://via.placeholder.com/300x300?text=No+Image';
     const stock = Number(product.Stock);
-    const price = Number(product.Price).toFixed(2);
+    const price = Number(product.Price);
+    const originalPrice = product.OriginalPrice ? Number(product.OriginalPrice) : 0;
+    const hasDiscount = originalPrice > price;
+    const discountPercentage = hasDiscount ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
     const isOutOfStock = stock <= 0;
 
     const handleAddToCart = (e: React.MouseEvent) => {
@@ -52,6 +56,9 @@ const ProductCard = ({ product }: { product: Product }) => {
                 {isOutOfStock && (
                     <div className="out-of-stock-badge">Out of Stock</div>
                 )}
+                {!isOutOfStock && hasDiscount && (
+                    <div className="discount-badge">-{discountPercentage}%</div>
+                )}
             </div>
 
             <div className="product-details">
@@ -61,7 +68,14 @@ const ProductCard = ({ product }: { product: Product }) => {
                 <h3 className="product-name">{product.ProductName}</h3>
 
                 <div className="product-footer">
-                    <div className="product-price">LKR {price}</div>
+                    <div className="product-price-container">
+                        {hasDiscount && (
+                            <span className="price-original">LKR {originalPrice.toFixed(2)}</span>
+                        )}
+                        <span className={`product-price ${hasDiscount ? 'price-discounted' : ''}`}>
+                            LKR {price.toFixed(2)}
+                        </span>
+                    </div>
 
                     <button
                         onClick={handleAddToCart}

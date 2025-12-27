@@ -23,13 +23,14 @@ export async function getProducts() {
   return rows.map((row) => ({
     ProductID: row.get('ProductID'),
     ProductName: row.get('ProductName'),
-    Price: row.get('Price'),
+    Price: row.get('DiscountPrice') || row.get('Price'), // Use DiscountPrice as selling price if available
     Stock: row.get('Stock'),
     Description: row.get('Description'),
     ImageURL: row.get('ImageURL'),
     category: row.get('category'),
     brand: row.get('Brand'),
     Benefits: row.get('Benefits'),
+    OriginalPrice: row.get('Price'), // The 'Price' column represents the original/MSRP
   }));
 }
 
