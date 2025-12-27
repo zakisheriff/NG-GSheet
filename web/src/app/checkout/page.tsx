@@ -24,6 +24,10 @@ export default function CheckoutPage() {
         address: '',
     });
     const [recommended, setRecommended] = useState<Product[]>([]);
+    const [promoCode, setPromoCode] = useState('');
+    const [discount, setDiscount] = useState(0);
+    const [promoError, setPromoError] = useState('');
+    const [promoSuccess, setPromoSuccess] = useState('');
 
     useEffect(() => {
         const fetchRecommended = async () => {
@@ -49,14 +53,77 @@ export default function CheckoutPage() {
         }
     }, [cartItems, router]);
 
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+
+        // Anti-Fraud: Clear discount if details are changed after applying
+        if (discount > 0) {
+            setDiscount(0);
+            setPromoSuccess('');
+            setPromoError('Details changed. Please re-apply promo code.');
+        }
     };
+
+    const handleApplyPromo = async () => {
+        setPromoError('');
+        setPromoSuccess('');
+        const code = promoCode.trim().toUpperCase();
+
+        // 0. Check prerequisites
+        if (!formData.phone || !formData.address) {
+            setPromoError('Please enter your Phone Number and Address first to verify eligibility.');
+            return;
+        }
+
+        // 1. Validate Code locally
+        let validCode = false;
+        if (code === 'NEWYEAR2026' || code === 'WELCOME10') {
+            validCode = true;
+        }
+
+        if (!validCode) {
+            setDiscount(0);
+            setPromoError('Invalid promo code');
+            return;
+        }
+
+        // 2. Validate Usage with Backend
+        try {
+            const res = await fetch('/api/verify-promo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    phone: formData.phone,
+                    address: formData.address,
+                    code: code
+                })
+            });
+            const data = await res.json();
+
+            if (!data.allowed) {
+                setDiscount(0);
+                setPromoError(data.message || 'Promo code not available.');
+                return;
+            }
+
+            // 3. Apply Discount
+            const discountAmount = total * 0.10; // 10% Discount
+            setDiscount(discountAmount);
+            setPromoSuccess('Promo applied: 10% Off!');
+
+        } catch (err) {
+            console.error(err);
+            setPromoError('Could not verify promo code. Please try again.');
+        }
+    };
+
+    // ... existing useEffects ...
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+
+        const finalTotal = total - discount;
 
         try {
             // 1. Save to Google Sheet via API
@@ -66,7 +133,9 @@ export default function CheckoutPage() {
                 body: JSON.stringify({
                     customer: formData,
                     items: cartItems,
-                    total: total,
+                    total: finalTotal,
+                    promoCode: discount > 0 ? promoCode : '',
+                    discount: discount
                 }),
             });
 
@@ -75,7 +144,13 @@ export default function CheckoutPage() {
             if (orderData.success) {
                 // 2. Construct WhatsApp Message
                 const itemsList = cartItems.map(i => `- ${i.ProductName} (x${i.quantity})`).join('%0a');
-                const message = `*New Order: ${orderData.orderId}*%0a%0a*Customer:* ${formData.name}%0a*Phone:* ${formData.phone}%0a*Address:* ${formData.address}%0a%0a*Items:*%0a${itemsList}%0a%0a*Total:* LKR ${total.toFixed(2)}%0a%0aPlease confirm my order.`;
+                let message = `*New Order: ${orderData.orderId}*%0a%0a*Customer:* ${formData.name}%0a*Phone:* ${formData.phone}%0a*Address:* ${formData.address}%0a%0a*Items:*%0a${itemsList}`;
+
+                if (discount > 0) {
+                    message += `%0a%0a*Subtotal:* LKR ${total.toFixed(2)}%0a*Discount:* -LKR ${discount.toFixed(2)} (${promoCode})`;
+                }
+
+                message += `%0a*Total:* LKR ${finalTotal.toFixed(2)}%0a%0aPlease confirm my order.`;
 
                 const shopPhone = '94758760367';
                 const whatsappUrl = `https://wa.me/${shopPhone}?text=${message}`;
@@ -184,10 +259,45 @@ export default function CheckoutPage() {
                                 </div>
                             ))}
                         </div>
+
+                        <div className="promo-code-section">
+                            <div className="promo-input-group">
+                                <input
+                                    type="text"
+                                    placeholder="Promo Code"
+                                    className="form-input promo-input"
+                                    value={promoCode}
+                                    onChange={(e) => setPromoCode(e.target.value)}
+                                />
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary promo-btn"
+                                    onClick={handleApplyPromo}
+                                >
+                                    Apply
+                                </button>
+                            </div>
+                            {promoError && <p className="promo-message error">{promoError}</p>}
+                            {promoSuccess && <p className="promo-message success">{promoSuccess}</p>}
+                        </div>
+
                         <div className="divider"></div>
+
+                        <div className="summary-row">
+                            <span>Subtotal</span>
+                            <span>LKR {total.toFixed(2)}</span>
+                        </div>
+
+                        {discount > 0 && (
+                            <div className="summary-row discount">
+                                <span>Discount</span>
+                                <span>- LKR {discount.toFixed(2)}</span>
+                            </div>
+                        )}
+
                         <div className="summary-row total">
                             <span>Total</span>
-                            <span>LKR {total.toFixed(2)}</span>
+                            <span>LKR {(total - discount).toFixed(2)}</span>
                         </div>
 
                         <button

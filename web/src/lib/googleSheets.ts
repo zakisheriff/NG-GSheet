@@ -61,3 +61,78 @@ export async function addOrder(order: any) {
     return false;
   }
 }
+
+export async function checkPromoUsage(phone: string, address: string, code: string) {
+  try {
+    const doc = getGoogleDoc();
+    await doc.loadInfo();
+    let sheet = doc.sheetsByTitle['PromoUsage'];
+
+    // Auto-create sheet if missing (User Requirement)
+    if (!sheet) {
+      sheet = await doc.addSheet({ headerValues: ['Phone', 'Address', 'PromoCode', 'Date'] });
+      await sheet.updateProperties({ title: 'PromoUsage' });
+    } else {
+      // Ensure headers exist
+      try {
+        await sheet.loadHeaderRow();
+      } catch (e) {
+        await sheet.setHeaderRow(['Phone', 'Address', 'PromoCode', 'Date']);
+      }
+    }
+
+    const rows = await sheet.getRows();
+
+    // Normalize inputs for comparison
+    const searchPhone = phone.toString().trim().replace(/\s+/g, ''); // Remove spaces
+    const searchAddress = address.trim().toLowerCase();
+    const searchCode = code.trim().toLowerCase();
+
+    // Check if combo exists
+    const exists = rows.some(row => {
+      const rowPhone = row.get('Phone')?.toString().trim().replace(/\s+/g, '') || '';
+      const rowAddress = row.get('Address')?.toString().trim().toLowerCase() || '';
+      const rowCode = row.get('PromoCode')?.toString().trim().toLowerCase() || '';
+
+      return rowPhone === searchPhone &&
+        rowAddress === searchAddress &&
+        rowCode === searchCode;
+    });
+
+    return exists;
+  } catch (error) {
+    console.error('Error checking promo usage:', error);
+    return false; // Fail safe
+  }
+}
+
+export async function recordPromoUsage(phone: string, address: string, code: string) {
+  try {
+    const doc = getGoogleDoc();
+    await doc.loadInfo();
+    let sheet = doc.sheetsByTitle['PromoUsage'];
+
+    if (!sheet) {
+      sheet = await doc.addSheet({ headerValues: ['Phone', 'Address', 'PromoCode', 'Date'] });
+      await sheet.updateProperties({ title: 'PromoUsage' });
+    } else {
+      // Ensure headers exist
+      try {
+        await sheet.loadHeaderRow();
+      } catch (e) {
+        await sheet.setHeaderRow(['Phone', 'Address', 'PromoCode', 'Date']);
+      }
+    }
+
+    await sheet.addRow({
+      Phone: phone,
+      Address: address,
+      PromoCode: code,
+      Date: new Date().toLocaleString()
+    });
+    return true;
+  } catch (error) {
+    console.error('Error recording promo usage:', error);
+    return false;
+  }
+}

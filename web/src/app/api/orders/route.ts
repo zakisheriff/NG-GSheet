@@ -1,14 +1,13 @@
 import { NextResponse } from 'next/server';
-import { addOrder } from '@/lib/googleSheets';
+import { addOrder, recordPromoUsage } from '@/lib/googleSheets';
 import { sendWhatsAppNotification } from '../whatsapp/route';
 
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { customer, items, total } = body;
+        const { customer, items, total, promoCode } = body;
 
         // Construct order object
-        // OrderID can be timestamp or UUID. Using timestamp for simplicity + random.
         const orderId = `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
         const date = new Date().toLocaleString();
 
@@ -22,9 +21,25 @@ export async function POST(request: Request) {
             Date: date,
         };
 
+        // ... existing order logic ...
+
+        // SERVERSIDE FRAUD CHECK:
+        // If a promo code is claimed, verify it's valid and unused for this user one last time.
+        if (promoCode) {
+            const isAlreadyUsed = await checkPromoUsage(customer.phone, customer.address, promoCode);
+            if (isAlreadyUsed) {
+                return NextResponse.json({ error: 'Promo code invalid or already used.' }, { status: 400 });
+            }
+        }
+
         const success = await addOrder(orderData);
 
         if (success) {
+            // Record Promo Usage if applicable
+            if (promoCode) {
+                await recordPromoUsage(customer.phone, customer.address, promoCode);
+            }
+
             // Send WhatsApp notification to business owner
             sendWhatsAppNotification({
                 orderId,
