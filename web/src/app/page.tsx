@@ -50,7 +50,7 @@ const Home = () => {
 
         if (Array.isArray(products) && products.length > 0) {
           setNewArrivals(products.slice(0, 4));
-          setBestSellers(products.slice(4, 7));
+          setBestSellers(products.slice(4, 8));
         }
       } catch (error) {
         console.error("Failed to fetch products for home page", error);
