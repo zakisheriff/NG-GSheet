@@ -1,8 +1,10 @@
 .footer {
-    background-color: #1d1d1f;
-    color: white;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF9E5 100%);
+    color: #1d1d1f;
     padding: 80px 0 32px;
     margin-top: 80px;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    /* Subtle gold border */
 }
 
 .footer-container {
@@ -28,7 +30,8 @@
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 12px;
-    background: linear-gradient(135deg, #0071e3, #ff6b6b);
+    background: linear-gradient(135deg, #D4AF37, #B45309);
+    /* Gold to Bronze */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -38,17 +41,17 @@
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 12px;
-    color: white;
+    color: #1d1d1f;
 }
 
 .footer-text {
-    color: rgba(255, 255, 255, 0.7);
+    color: #6e6e73;
     line-height: 1.6;
     font-size: 14px;
 }
 
 .footer-link {
-    color: rgba(255, 255, 255, 0.7);
+    color: #6e6e73;
     font-size: 14px;
     transition: all 0.2s ease;
     width: fit-content;
@@ -56,7 +59,8 @@
 }
 
 .footer-link:hover {
-    color: white;
+    color: #D4AF37;
+    /* Gold hover */
     transform: translateX(4px);
 }
 
@@ -65,11 +69,11 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 32px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .footer-copyright {
-    color: rgba(255, 255, 255, 0.6);
+    color: #86868b;
     font-size: 14px;
 }
 
@@ -85,13 +89,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.7);
+    color: #6e6e73;
     transition: all 0.2s ease;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .social-link:hover {
-    color: white;
+    color: #D4AF37;
+    background-color: rgba(212, 175, 55, 0.1);
     transform: translateY(-1px);
 }
 
@@ -131,8 +136,9 @@
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    background-color: white;
-    color: #1d1d1f;
+    background-color: #1d1d1f;
+    /* Dark button for contrast */
+    color: white;
     border-radius: 999px;
     text-decoration: none;
     font-size: 14px;
@@ -141,18 +147,20 @@
 }
 
 .footer-btn:hover {
+    background-color: black;
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .footer-btn.secondary {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: white;
+    color: #1d1d1f;
+    border: 1px solid #d2d2d7;
 }
 
 .footer-btn.secondary:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #f5f5f7;
+    border-color: #86868b;
 }
 
 .footer-info-block {
@@ -164,23 +172,23 @@
 
 .footer-info-block p {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+    color: #6e6e73;
     line-height: 1.5;
     margin: 0;
 }
 
 .footer-info-block strong {
-    color: white;
+    color: #1d1d1f;
     font-weight: 600;
 }
 
 .footer-info-block a {
-    color: rgba(255, 255, 255, 0.7);
+    color: #6e6e73;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .footer-info-block a:hover {
-    color: #0071e3;
+    color: #D4AF37;
     text-decoration: underline;
 }
