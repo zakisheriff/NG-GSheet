@@ -713,8 +713,22 @@
 }
 
 /* Home page top spacing */
+/* Home page top spacing */
 .home-page {
     padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+    .home-page {
+        padding-top: 40px !important;
+        /* Remove gap on mobile */
+    }
+
+    .hero-section {
+        margin-top: 0 !important;
+        border-radius: 0 0 32px 32px;
+        /* Only bottom rounded on mobile */
+    }
 }
 
 /* Products Grid */
