@@ -181,7 +181,7 @@ function ProductsContent() {
                 </button>
 
                 {/* Desktop Sidebar */}
-                <aside className="filters-sidebar desktop-only">
+                <aside className="filters-sidebar desktop-only" style={{ marginTop: '84px' }}>
                     <div className="filters-header">
                         <h3>Filters</h3>
                         <button onClick={clearFilters} className="clear-filters-btn">Clear All</button>
