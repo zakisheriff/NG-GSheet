@@ -764,6 +764,8 @@
         gap: 16px;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        /* Smooth scroll between cards */
         scrollbar-width: none;
         /* Firefox */
         -ms-overflow-style: none;
@@ -778,6 +780,8 @@
     .product-card-wrapper {
         flex: 0 0 280px;
         scroll-snap-align: start;
+        scroll-snap-stop: always;
+        /* Force stop at each card - one by one scrolling */
     }
 }
 
