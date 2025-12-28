@@ -90,12 +90,9 @@ const Home = () => {
 
         <div className="hero-container-split">
           <div className="hero-content-left">
-            <h1 className="hero-headline-large">
+            <h1 className="hero-headline-large" style={{marginTop: "2rem"}}>
               Nappy Garde
             </h1>
-            <h2 className="hero-subheadline-seasonal">
-              New Year, New Beginnings
-            </h2>
             <p className="hero-subtext-large">
               Start 2026 with premium care for your little one. <br className="hidden md:block" />
               Celebrate with our exclusive New Year collection.

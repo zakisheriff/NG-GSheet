@@ -14,7 +14,7 @@ import Fireworks from "@/components/Fireworks";
 export const metadata: Metadata = {
   metadataBase: new URL('https://nappygarde.lk'),
   title: {
-    default: "Nappy Garde | Premium Baby Diapers & Care in Sri Lanka",
+    default: "Nappy Garde",
     template: "%s | Nappy Garde"
   },
   description: "Nappy Garde offers premium baby diapers, pants, wipes, and skincare products in Sri Lanka. Ultra-soft comfort, superior absorption, and island-wide delivery.",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: "Nappy Garde | Premium Baby Diapers & Care",
+    title: "Nappy Garde",
     description: "Premium comfort for your little one. Shop Nappy Garde's range of ultra-soft diapers, wipes, and baby care essentials. Island-wide delivery in Sri Lanka.",
     url: 'https://nappygarde.lk',
     siteName: 'Nappy Garde',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Nappy Garde | Premium Baby Diapers & Care",
+    title: "Nappy Garde",
     description: "Premium comfort for your little one. Shop Nappy Garde's range of ultra-soft diapers, wipes, and baby care essentials.",
     images: ['/ng_logo.png'],
   },
