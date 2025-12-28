@@ -90,7 +90,7 @@ const Home = () => {
 
         <div className="hero-container-split">
           <div className="hero-content-left">
-            <h1 className="hero-headline-large" style={{marginTop: "2rem"}}>
+            <h1 className="hero-headline-large">
               Nappy Garde
             </h1>
             <p className="hero-subtext-large">
