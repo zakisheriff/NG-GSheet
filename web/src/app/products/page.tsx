@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, Suspense, useRef } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import './Products.css';
@@ -12,8 +12,6 @@ function ProductsContent() {
     const [products, setProducts] = useState<any[]>([]); // Store filtered products to display
     const [loading, setLoading] = useState(true);
     const [showMobileFilters, setShowMobileFilters] = useState(false);
-    const searchInputRef = useRef<HTMLInputElement>(null);
-
     // Lock body scroll when mobile filters are open
     useEffect(() => {
         if (showMobileFilters) {
@@ -25,38 +23,6 @@ function ProductsContent() {
             document.body.style.overflow = '';
         };
     }, [showMobileFilters]);
-
-    // Prevent scroll with readonly trick - browser won't scroll readonly inputs
-    useEffect(() => {
-        const input = searchInputRef.current;
-        if (!input) return;
-
-        // Make readonly initially to prevent scroll on focus
-        input.setAttribute('readonly', 'readonly');
-
-        const handleClick = () => {
-            // Remove readonly on click so user can type
-            input.removeAttribute('readonly');
-
-            // Focus it manually without letting browser scroll
-            setTimeout(() => {
-                input.focus();
-            }, 100);
-        };
-
-        const handleBlur = () => {
-            // Make readonly again when not focused
-            input.setAttribute('readonly', 'readonly');
-        };
-
-        input.addEventListener('click', handleClick);
-        input.addEventListener('blur', handleBlur);
-
-        return () => {
-            input.removeEventListener('click', handleClick);
-            input.removeEventListener('blur', handleBlur);
-        };
-    }, []);
 
     const [filters, setFilters] = useState<{
         category: string;
@@ -239,7 +205,6 @@ function ProductsContent() {
                         <div className="products-controls">
                             {/* Mobile Search - shown only on mobile */}
                             <input
-                                ref={searchInputRef}
                                 type="text"
                                 className="mobile-search-input mobile-only"
                                 placeholder="Search..."
