@@ -378,7 +378,7 @@ export default function CheckoutPage() {
                             className="place-order-btn"
                             disabled={loading}
                         >
-                            {loading ? 'Processing...' : `Place Order (LKR ${(total - discount + deliveryCharge).toFixed(2)}) on WhatsApp`}
+                            {loading ? 'Processing...' : `Place Order (LKR ${(total - discount + deliveryCharge).toFixed(2)})`}
                         </button>
 
                     </div>
