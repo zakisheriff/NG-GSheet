@@ -4,12 +4,13 @@ import './Fireworks.css';
 const Fireworks = () => {
     return (
         <div className="fireworks-container">
-            {/* Simple CSS-based Firework bursts */}
+            {/* Apple Blue & Red Fireworks covering more area */}
             <div className="firework firework-1"></div>
             <div className="firework firework-2"></div>
             <div className="firework firework-3"></div>
-
-            {/* Can add more if needed */}
+            <div className="firework firework-4"></div>
+            <div className="firework firework-5"></div>
+            <div className="firework firework-6"></div>
         </div>
     );
 };

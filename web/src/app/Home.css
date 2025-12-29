@@ -644,14 +644,13 @@
 
 /* Renaming to avoid conflicts */
 .btn-gold {
-    background: #D4AF37 !important;
+    background: #ff3b30 !important;
     color: #fff !important;
     border: none !important;
 }
 
 .btn-gold:hover {
-    background: #FCD34D !important;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4) !important;
+    background: #ff3b30 !important;
     transform: translateY(-2px);
 }
 
