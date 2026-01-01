@@ -221,15 +221,18 @@ Visit **http://localhost:3000** 🎉
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
 ## 📄 License
 
-MIT License — 100% Free and Open Source
+**© 2026 Zaki Sheriff. All Rights Reserved.**
+
+This project is **proprietary software** and is **not open source**.
+
+- **You may NOT** use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of this software.
+- **You may NOT** use this code for any commercial or non-commercial purpose.
+- **You may NOT** reverse engineer any part of this application.
+
+This repository is strictly for **showcasing portfolio work** only.
+
 
 ---
 
