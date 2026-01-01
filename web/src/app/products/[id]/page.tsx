@@ -192,59 +192,6 @@ export default function ProductDetail() {
                 </div>
             </div>
 
-            {/* Parent Reviews Marquee - Matching Home Page Structure Exactly */}
-            <section className="section-container reviews-section">
-                <h2 className="section-headline" style={{ textAlign: 'center' }}>Loved by Parents Like You</h2>
-                <div className="marquee-wrapper">
-                    <div className="marquee-content">
-                        {/* Original Set */}
-                        <div className="review-card">
-                            <div className="stars">
-                                <StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} />
-                            </div>
-                            <p className="review-text">"Super fast delivery! I ordered in the morning and got it by evening. Lifesaver for busy moms."</p>
-                            <p className="review-author">Ahmed Akram, Colombo</p>
-                        </div>
-                        <div className="review-card">
-                            <div className="stars">
-                                <StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} />
-                            </div>
-                            <p className="review-text">"Love the variety. I can buy different brands for day and night in one go. Excellent service from Nappy Garde."</p>
-                            <p className="review-author">Dhanushka de Silva, Kandy</p>
-                        </div>
-                        <div className="review-card">
-                            <div className="stars">
-                                <StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} />
-                            </div>
-                            <p className="review-text">"Genuine products at the best prices. Nappy Garde is my go-to for all baby essentials."</p>
-                            <p className="review-author">Samuel K, Galle</p>
-                        </div>
-                        {/* Duplicated for seamless loop */}
-                        <div className="review-card">
-                            <div className="stars">
-                                <StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} />
-                            </div>
-                            <p className="review-text">"Super fast delivery! I ordered in the morning and got it by evening. Lifesaver for busy moms."</p>
-                            <p className="review-author">Sarah Mohammad, Colombo</p>
-                        </div>
-                        <div className="review-card">
-                            <div className="stars">
-                                <StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} />
-                            </div>
-                            <p className="review-text">"Love the variety. I can buy different brands for day and night in one go. Excellent service from Nappy Garde."</p>
-                            <p className="review-author">Kumarasinghe M, Kandy</p>
-                        </div>
-                        <div className="review-card">
-                            <div className="stars">
-                                <StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} /><StarIcon size={16} />
-                            </div>
-                            <p className="review-text">"Genuine products at the best prices. Nappy Garde is my go-to for all baby essentials."</p>
-                            <p className="review-author">Rohan S, Galle</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Recommended Products */}
             {recommended.length > 0 && (
                 <section className="recommended-section">
