@@ -1,10 +1,37 @@
+# <div align="center">Nappy Garde</div>
+
+<div align="center">
+<strong>Premium Baby Care Essentials Delivered to Your Doorstep</strong>
+</div>
 
 <br />
 
-> **"Quality diapers shouldn't break the bank."**
+<div align="center">
+
+![Next.js](https://img.shields.io/badge/Next.js-15.1-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Google Sheets](https://img.shields.io/badge/Google%20Sheets-Database-34A853?style=for-the-badge&logo=google-sheets&logoColor=white)
+
+<br />
+
+<a href="https://nappygarde.lk">
+<img src="https://img.shields.io/badge/View%20Live%20Store-Click%20Here-0071e3?style=for-the-badge&logo=safari&logoColor=white" height="50" />
+</a>
+
+<br />
+<br />
+
+**[Visit Live Site: https://nappygarde.lk](https://nappygarde.lk)**
+
+</div>
+
+<br />
+
+> **"Premium Comfort for Your Little One."**
 >
-> Nappy Garde isn't just another e-commerce site; it's a thoughtfully crafted shopping experience.  
-> Built with modern web technologies and designed with Apple's aesthetic philosophy, it delivers premium baby products with pixel-perfect UI.
+> Nappy Garde isn't just an e-commerce store; it's a promise of quality.  
+> Built with modern web technologies and Google Sheets integration, it delivers a seamless shopping experience for parents in Sri Lanka.
 
 ---
 
@@ -12,119 +39,99 @@
 
 Nappy Garde's mission is to be:
 
-- **A modern e-commerce platform** — Seamless shopping experience for parents
-- **Apple-inspired design** — Pixel-perfect UI with glassmorphic effects
-- **Fully responsive** — Beautiful on desktop, tablet, and mobile
-- **Production-ready** — Complete with authentication, cart, and order management
+- **The most trusted baby care platform** — Offering premium diapers, wipes, and skincare
+- **A seamless digital experience** — Lightning-fast navigation and checkout
+- **A modern, beautiful web application** — Designed with care for parents who care
 
 ---
 
 ## ✨ Why Nappy Garde?
 
-Traditional e-commerce platforms are cluttered and overwhelming.  
-Nappy Garde brings **minimalist design and smooth interactions** to online baby product shopping.
+Parents deserve a stress-free shopping experience.  
+Nappy Garde provides **ultra-soft comfort, superior absorption, and island-wide delivery** with a platform that is as reliable as the products we sell.
 
 ---
 
-## 🎨 Apple-Inspired "Glassmorphic" Design
+## 🎨 Apple-Inspired Design
 
 - **Minimalist Aesthetics**  
-  Pure CSS implementation following Apple's design principles — clean, elegant, and modern.
+  Clean, clutter-free interface focusing on the products.
 
-- **Glassmorphic Cards**  
-  Translucent overlays with `backdrop-filter: blur(10px)` create depth and premium feel.
+- **Immersive Interactions**  
+  Subtle animations (like our celebratory fireworks) and fluid transitions.
 
-- **Smooth Animations**  
-  Fade-ins, hover lifts, and scale transitions provide delightful micro-interactions.
+- **Responsive Layouts**  
+  Optimized for every device, ensuring a perfect experience on mobile and desktop.
 
-- **Apple Color Palette**  
-  Signature blue (#0071E3), vibrant red (#FA233B), and clean backgrounds (#F5F5F7).
-
-- **System Typography**  
-  Native `-apple-system` fonts for maximum legibility and native feel.
+- **Modern Typography**  
+  Legible, beautiful fonts that enhance readability and trust.
 
 ---
 
-## 🛍️ Complete Shopping Experience
+## 🤖 Smart Integrations
 
-### Customer Features
-- **Browse Products** — View products by category (Newborn, Infant, Toddler)
-- **Smart Search & Filters** — Real-time search with price, stock, and category filters
-- **Product Details** — Images, descriptions, ratings, and reviews
-- **Shopping Cart** — Add, update, remove items with real-time totals
-- **Secure Checkout** — Cash on Delivery with form validation
-- **Order Tracking** — Track status from Pending → Processing → Out for Delivery → Delivered
-- **User Accounts** — Registration, login, order history
+- **Google Sheets Database**  
+  Innovative use of Google Sheets as a CMS and database for real-time inventory and order management.
 
-### Admin Features
-- **Dashboard** — Order statistics and recent activity
-- **Product Management** — Full CRUD operations for products
-- **Order Management** — Update order status and view details
-- **Stock Oversight** — Monitor inventory levels
+- **WhatsApp Notifications**  
+  Automated order updates sent directly to users via WhatsApp for instant communication.
+
+- **Enterprise SEO**  
+  Built with Next.js Metadata API for maximum visibility and search ranking.
+
+- **Dynamic Cart System**  
+  Real-time state management for a smooth "add to cart" and checkout flow.
 
 ---
 
-## 🔐 Enterprise-Grade Security
+## 🔐 Secure & Reliable
 
-- **Bcrypt Password Hashing**  
-  10 salt rounds for secure password storage.
+- **Secure Checkout**  
+  Streamlined and secure checkout process for customer peace of mind.
 
-- **JWT Authentication**  
-  Token-based authentication with 7-day expiry.
+- **Data Privacy**  
+  Respecting user data with minimal collection and secure handling.
 
-- **Protected Routes**  
-  Admin-only endpoints for sensitive operations.
-
-- **Input Validation**  
-  Server-side validation on all API endpoints.
+- **Performance First**  
+  Built on Next.js 16 to ensure instant loading times and interactions.
 
 ---
 
-## � Project Structure
+## 🎓 Complete Shopping Experience
+
+- **Curated Catalog**  
+  Browse our selection of premium baby products with ease.
+
+- **Instant Search**  
+  Find exactly what you need with optimized search functionality.
+
+- **Quick Checkout**  
+  Optimized flow to get orders placed in seconds.
+
+- **Mobile First**  
+  Designed primarily for the mobile experience that busy parents rely on.
+
+---
+
+## 📁 Project Structure
 
 ```
-Nappy-Garde/
-├── backend/                      # Node.js + Express API
+Nappy-Garde-GSheet/
+├── web/
 │   ├── src/
-│   │   ├── server.js             # Express server entry point
-│   │   ├── routes/               # API endpoints
-│   │   │   ├── users.routes.js   # Authentication (JWT + Bcrypt)
-│   │   │   ├── products.routes.js # Product CRUD & filtering
-│   │   │   ├── cart.routes.js    # Shopping cart management
-│   │   │   └── orders.routes.js  # Order processing & tracking
-│   │   └── middleware/
-│   │       └── auth.middleware.js # JWT verification & admin check
-│   ├── .env                      # Environment configuration
-│   └── package.json
-│
-├── frontend/                     # React + Vite SPA
-│   ├── src/
-│   │   ├── App.jsx               # Main app with routing
-│   │   ├── pages/                # All application pages
-│   │   │   ├── Home.jsx          # Landing with hero & featured products
-│   │   │   ├── Products.jsx      # Product grid with filters
-│   │   │   ├── Login.jsx         # Authentication
-│   │   │   └── (more pages...)
-│   │   ├── components/           # Reusable components
-│   │   │   ├── Navbar.jsx        # Sticky nav with search & cart
-│   │   │   ├── Footer.jsx        # Footer with links
-│   │   │   └── ProductCard.jsx   # Glassmorphic product cards
-│   │   ├── context/              # React Context
-│   │   │   ├── AuthContext.jsx   # User authentication state
-│   │   │   └── CartContext.jsx   # Shopping cart state
-│   │   ├── styles/               # Pure CSS (Apple-inspired)
-│   │   │   └── index.css         # Complete design system
-│   │   └── api/
-│   │       └── api.js            # Axios client with interceptors
-│   └── package.json
-│
-├── database/
-│   ├── schema.sql                # PostgreSQL schema
-│   └── seed.sql                  # Sample data (10 products, 3 users)
-│
-├── setup-db.sh                   # Automated database setup
-├── package.json                  # Root package with concurrent scripts
-└── README.md
+│   │   ├── app/
+│   │   │   ├── api/              # Next.js API Routes (Orders, WhatsApp)
+│   │   │   ├── checkout/         # Checkout Page
+│   │   │   ├── product/          # Product Details
+│   │   │   └── layout.tsx        # Main Application Layout
+│   │   ├── components/           # Reusable UI Components
+│   │   │   ├── Navbar.tsx        # Navigation
+│   │   │   ├── Footer.tsx        # Footer
+│   │   │   └── Fireworks.tsx     # Celebration Animations
+│   │   └── context/
+│   │       └── CartContext.tsx   # State Management
+│   └── public/                   # Static Assets
+└── products_import.csv           # Product Import Data
 ```
 
 ---
@@ -134,242 +141,89 @@ Nappy-Garde/
 ### Prerequisites
 
 - **Node.js** (v18+)
-- **PostgreSQL** (v14+)
-- **npm**
+- **npm** or **yarn** or **pnpm**
+- **Google Cloud Service Account** (for Sheets API)
 
-### ⚡ One-Command Setup
+### 1. Clone the Repository
 
 ```bash
-# 1. Clone the repository
-git clone <repository-url>
-cd Nappy-Garde
+git clone https://github.com/nappygarde/nappy-garde.git
+cd Nappy-Garde-GSheet
+```
 
-# 2. Install all dependencies
-npm run install:all
+### 2. Install Dependencies
 
-# 3. Setup database (automated)
-npm run setup:db
+```bash
+cd web
+npm install
+```
 
-# 4. Start everything!
+### 3. Environment Configuration
+
+Create `web/.env.local`:
+
+```env
+GOOGLE_SERVICE_ACCOUNT_EMAIL=your-service-account@project.iam.gserviceaccount.com
+GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n..."
+SPREADSHEET_ID=your-google-sheet-id
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+```
+
+### 4. Run the Application
+
+```bash
 npm run dev
 ```
 
-Visit **http://localhost:5173** 🎉
-
-### Default Test Accounts
-
-**Admin:**
-- Email: `admin@nappygarde.com`
-- Password: `password123`
-
-**Customer:**
-- Email: `john@example.com`
-- Password: `password123`
+Visit **http://localhost:3000** 🎉
 
 ---
 
 ## 🎯 Key Features
 
-### Design & UX
-✅ **Pixel-Perfect UI** — Apple-inspired design with glassmorphic effects  
-✅ **Smooth Animations** — Fade-ins, hover lifts, modal transitions  
-✅ **Fully Responsive** — Optimized for desktop, tablet, and mobile  
-✅ **Mobile Menu** — Hamburger navigation with slide-in animation  
+### For Parents
 
-### Shopping Experience
-✅ **Product Filtering** — Category, price range, stock availability  
-✅ **Real-Time Search** — Instant product search with debouncing  
-✅ **Smart Cart** — Automatic total calculation with stock validation  
-✅ **Order Tracking** — Visual status indicators for all orders  
+✅ **Easy Browsing** — Clean categories and product views  
+✅ **Fast Checkout** — Minimized steps to purchase  
+✅ **Mobile Optimized** — Perfect for shopping on the go  
+✅ **Instant Support** — WhatsApp integration for help  
 
-### Technical Excellence
-✅ **REST API** — Complete backend with proper error handling  
-✅ **JWT Auth** — Secure token-based authentication  
-✅ **Transaction Safety** — Database transactions for order placement  
-✅ **Stock Management** — Automatic inventory updates  
+### For Admins
+
+✅ **Sheet-Based Management** — Manage products and orders directly in Google Sheets  
+✅ **Real-Time Updates** — Changes in Sheets reflect instantly on the site  
+✅ **Zero Infrastructure** — No complex database servers to maintain  
 
 ---
 
-## � Tech Stack
+## 🔧 Tech Stack
 
-### Backend
-- **Node.js** + **Express.js** — REST API server
-- **PostgreSQL** — Relational database with ACID compliance
-- **Bcrypt** — Password hashing (10 salt rounds)
-- **JWT** — Token-based authentication (7-day expiry)
-- **CORS** — Cross-origin resource sharing
-- **Nodemon** — Auto-reload during development
+### Frontend & Backend (Next.js)
+- **Next.js 16** — React Framework for Production
+- **React 19** — Library for web and native user interfaces
+- **Tailwind CSS** — Utility-first CSS framework
+- **TypeScript** — Typed JavaScript for better tooling
+- **Sonner** — An opinionated toast component for React
 
-### Frontend
-- **React.js** (18.2+) — Modern UI framework
-- **React Router** — Client-side routing
-- **Context API** — State management
-- **Axios** — HTTP client with interceptors
-- **Pure CSS** — No frameworks, Apple-inspired design system
-- **Vite** — Lightning-fast build tool
-
-### Database
-- **PostgreSQL** (14+) — 6 core tables
-- **Indexes** — Optimized queries
-- **Triggers** — Auto-update timestamps
-- **Constraints** — Data integrity enforcement
-
----
-
-## 📊 Database Schema
-
-6 core tables with proper relationships:
-
-- **users** — Authentication with Bcrypt + roles (customer/admin)
-- **products** — Product catalog with categories & images
-- **orders** — Order management with status tracking
-- **order_items** — Line items for each order
-- **cart_items** — Shopping cart persistence
-- **reviews** — Product ratings and comments
-
-**Sample Data Included:**
-- 10 premium diaper products
-- 3 users (1 admin, 2 customers)
-- 5 sample orders
-- Product reviews with ratings
-
----
-
-## 🎨 Design System
-
-### Colors
-```css
---primary-blue: #0071E3      /* Primary buttons, links */
---secondary-red: #FA233B     /* Badges, alerts, accents */
---text-primary: #1D1D1F      /* Main text */
---text-secondary: #6E6E73    /* Subtext, descriptions */
---bg-primary: #F5F5F7        /* Page background */
---bg-white: #FFFFFF          /* Card background */
---glass-bg: rgba(255, 255, 255, 0.75)  /* Glassmorphic cards */
-```
-
-### Typography
-- **Font Family:** -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto
-- **Headings:** 600-700 weight
-- **Body:** 400 weight
-- **Scale:** Harmonious type scale from 0.75rem to 3rem
-
-### Spacing
-- **Consistent:** 8px base unit (xs, sm, md, lg, xl, 2xl, 3xl)
-- **Border Radius:** 8px - 24px for different elements
-
----
-
-## � API Documentation
-
-### Authentication
-- `POST /api/users/register` — Register new user
-- `POST /api/users/login` — Login user (returns JWT)
-- `GET /api/users/me` — Get current user (protected)
-
-### Products
-- `GET /api/products` — List products (with filters)
-- `GET /api/products/:id` — Get product details & reviews
-- `POST /api/products` — Create product (admin only)
-- `PUT /api/products/:id` — Update product (admin only)
-- `DELETE /api/products/:id` — Delete product (admin only)
-
-### Shopping Cart
-- `GET /api/cart` — Get user's cart (protected)
-- `POST /api/cart` — Add item to cart (protected)
-- `PUT /api/cart/:id` — Update quantity (protected)
-- `DELETE /api/cart/:id` — Remove item (protected)
-
-### Orders
-- `GET /api/orders` — Get orders (user's orders or all for admin)
-- `GET /api/orders/:id` — Get order details (protected)
-- `POST /api/orders` — Create order from cart (protected)
-- `PUT /api/orders/:id/status` — Update status (admin only)
-
----
-
-## 🔒 Security Features
-
-✅ **Bcrypt Password Hashing** — Industry-standard encryption  
-✅ **JWT Tokens** — Secure authentication with expiry  
-✅ **Protected Routes** — Role-based access control  
-✅ **Input Validation** — Server-side validation on all endpoints  
-✅ **SQL Injection Prevention** — Parameterized queries  
-✅ **CORS Configuration** — Controlled cross-origin access  
-
----
-
-## 🛠️ Available Scripts
-
-### Root Directory
-```bash
-npm run dev              # Start backend + frontend concurrently
-npm run dev:backend      # Start backend only (port 5000)
-npm run dev:frontend     # Start frontend only (port 5173)
-npm run install:all      # Install all dependencies
-npm run setup:db         # Automated database setup
-npm run build:frontend   # Build frontend for production
-```
-
-### Backend
-```bash
-npm start                # Start backend in production mode
-npm run dev              # Start with nodemon (auto-reload)
-```
-
-### Frontend
-```bash
-npm run dev              # Start Vite dev server
-npm run build            # Build for production
-npm run preview          # Preview production build
-```
+### Data & Services
+- **Google Sheets API** — Primary database for products and orders
+- **Google Auth Library** — Secure server-to-server authentication
 
 ---
 
 ## 🌐 Deployment
 
-### Backend (Railway/Render/Heroku)
-1. Set environment variables in platform dashboard
-2. Connect PostgreSQL database
-3. Run database migrations
-4. Deploy from `backend` directory
-
-### Frontend (Vercel/Netlify)
-1. Build: `npm run build` in frontend directory
-2. Deploy `dist` folder
-3. Set `VITE_API_URL` environment variable
-4. Configure SPA redirects
-
----
-
-## 🐛 Troubleshooting
-
-**Database Connection Error:**
-- Ensure PostgreSQL is running
-- Check `backend/.env` credentials
-- Verify database exists: `psql -U postgres -l`
-
-**Port Already in Use:**
-```bash
-# Kill process on port 5000
-lsof -ti:5000 | xargs kill -9
-```
-
-**CORS Errors:**
-- Ensure backend is running on port 5000
-- Check `frontend/.env` has correct `VITE_API_URL`
+### Vercel (Recommended)
+1. Push to GitHub
+2. Import project in Vercel
+3. Add Environment Variables (Service Account, Sheet ID)
+4. Deploy!
 
 ---
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
 
 ---
 
@@ -379,14 +233,18 @@ MIT License — 100% Free and Open Source
 
 ---
 
-## 🙏 Acknowledgments
+## ☕️ Support the Project
 
-- **Apple.com** for design inspiration
-- **Unsplash** for product placeholder images
-- **React and Node.js** communities for amazing tools
-
----
+<div align="center">
+<a href="https://nappygarde.lk">
+<img src="https://nappygarde.lk/new_icon.png" height="60" width="60" alt="Nappy Garde Logo">
+</a>
+</div>
 
 <p align="center">
-<em>Where premium design meets seamless shopping.</em>
+Made by <strong>Zaki Sheriff</strong>
+</p>
+
+<p align="center">
+<em>Premium care for your little ones.</em>
 </p>
