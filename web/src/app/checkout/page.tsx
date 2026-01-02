@@ -143,6 +143,8 @@ export default function CheckoutPage() {
         }
     };
 
+    const [orderSuccess, setOrderSuccess] = useState<string | null>(null);
+
     // ... existing useEffects ...
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -169,25 +171,8 @@ export default function CheckoutPage() {
             const orderData = await orderRes.json();
 
             if (orderData.success) {
-                // 2. Construct WhatsApp Message
-                const itemsList = cartItems.map(i => `- ${i.ProductName} (x${i.quantity})`).join('%0a');
-                let message = `*New Order: ${orderData.orderId}*%0a%0a*Customer:* ${formData.name}%0a*Phone:* ${formData.phone}%0a*Address:* ${formData.address}%0a*District:* ${formData.district}%0a%0a*Items:*%0a${itemsList}`;
-
-                if (discount > 0) {
-                    message += `%0a%0a*Subtotal:* LKR ${total.toFixed(2)}%0a*Discount:* -LKR ${discount.toFixed(2)} (${promoCode})`;
-                }
-
-                if (deliveryCharge > 0) {
-                    message += `%0a*Delivery:* LKR ${deliveryCharge.toFixed(2)}`;
-                }
-
-                message += `%0a*Total:* LKR ${finalTotal.toFixed(2)}%0a%0aPlease confirm my order.`;
-
-                const shopPhone = '94758760367';
-                const whatsappUrl = `https://wa.me/${shopPhone}?text=${message}`;
-
                 clearCart();
-                window.location.href = whatsappUrl;
+                setOrderSuccess(orderData.orderId);
             } else {
                 alert('Failed to place order. Please try again.');
             }
@@ -198,6 +183,30 @@ export default function CheckoutPage() {
             setLoading(false);
         }
     };
+
+    if (orderSuccess) {
+        return (
+            <div className="checkout-page page">
+                <div className="container-wide checkout-container" style={{ justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
+                    <div className="order-success-card" style={{ textAlign: 'center', padding: '40px', background: 'white', borderRadius: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                        <div style={{ fontSize: '60px', marginBottom: '20px' }}>🎉</div>
+                        <h1 style={{ fontSize: '32px', marginBottom: '10px', color: '#1d1d1f' }}>Order Placed Successfully!</h1>
+                        <p style={{ fontSize: '18px', color: '#86868b', marginBottom: '30px' }}>
+                            Thank you for your purchase. Your order ID is <strong>{orderSuccess}</strong>.
+                            <br />We will contact you shortly to confirm delivery.
+                        </p>
+                        <button
+                            onClick={() => router.push('/')}
+                            className="place-order-btn"
+                            style={{ maxWidth: '300px', margin: '0 auto' }}
+                        >
+                            Continue Shopping
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="checkout-page page">
