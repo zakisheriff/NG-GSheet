@@ -233,7 +233,7 @@ const Home = () => {
                 <Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" /><Star size={16} fill="#f5a623" stroke="none" />
               </div>
               <p className="review-text">"Genuine products at the best prices. Nappy Garde is my go-to for all baby essentials."</p>
-              <p className="review-author"><span className="review-author-name">Emily,</span> <span className="review-author-location">Galle</span></p>
+              <p className="review-author"><span className="review-author-name">Afraa,</span> <span className="review-author-location">Colombo</span></p>
             </div>
             {/* Duplicated for seamless loop */}
             <div className="review-card">

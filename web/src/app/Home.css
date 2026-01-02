@@ -2539,6 +2539,8 @@
 @media (max-width: 768px) {
     .marquee-content {
         gap: 16px;
+        animation-duration: 20s;
+        /* Faster on mobile */
     }
 
     .review-card {
